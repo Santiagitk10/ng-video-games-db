@@ -7,7 +7,11 @@ export class HttpHeadersInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(
+    //HttpRequest represents an outgoing request, including URL, method, headers, 
+    //body, and other request configuration options. Instances should be assumed 
+    //to be immutable. To modify a HttpRequest, the clone method should be used.
     req: HttpRequest<any>,
+    //HttpHandler transforma un HttpRequest en un Stream de HttpEvents
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     req = req.clone({
