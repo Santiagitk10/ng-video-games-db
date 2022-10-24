@@ -40,6 +40,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
       });
   }
 
+  //Se usa en el plug in mwl del html
   getColor(value: number): string {
     if (value > 75) {
       return '#5ee432';

@@ -12,6 +12,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class HomeComponent implements OnInit, OnDestroy {
   public sort: string;
   public games: Array<Game>;
+  //Se guardan las subscripciones en estas variables para cerrarlas en ngOnDestroy()
   private routeSub: Subscription;
   private gameSub: Subscription;
 

@@ -27,6 +27,7 @@ export class HttpService {
     });
   }
 
+  //Se hacen 3 peticiones a la API y se combinan para tener toda la información que se requiere
   getGameDetails(id: string): Observable<Game> {
     const gameInfoRequest = this.http.get(`${env.BASE_URL}/games/${id}`);
     const gameTrailersRequest = this.http.get(
@@ -36,6 +37,7 @@ export class HttpService {
       `${env.BASE_URL}/games/${id}/screenshots`
     );
 
+    //Método para combinar la información de las 3 peticiones
     return forkJoin({
       gameInfoRequest,
       gameScreenshotsRequest,
@@ -43,6 +45,8 @@ export class HttpService {
     }).pipe(
       map((resp: any) => {
         return {
+          //Se usa el spread operator para sacar todas la propiedades de la primera petición
+          //y se crean dos propiedades adicionales con lo que devuelven las otras dos peticiones
           ...resp['gameInfoRequest'],
           screenshots: resp['gameScreenshotsRequest']?.results,
           trailers: resp['gameTrailersRequest']?.results,
