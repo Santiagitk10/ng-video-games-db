@@ -14,6 +14,7 @@
             Release: {{ game.released | date }}
           </h2>
           <p class="game-header-genres">
+            <!-- Se usa last para no mostrar la coma "," en el último valor de la lista de genre -->
             <span *ngFor="let genre of game.genres; let last = last"
             >{{ genre.name }}<span *ngIf="!last">, </span></span
           >
